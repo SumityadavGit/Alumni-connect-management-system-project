@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection Page</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 20%, #eef0f3 100%);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: linear-gradient(90deg, #5320a5, #7b2fb8);
+            color: white;
+            padding: 30px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo h1 {
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header .btn {
+            margin-left: 10px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+        .header .btn:hover {
+            background-color: #e9e9e9;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px;
+        }
+        .illustrations{
+            max-width: 500px;
+        }
+        .illustrations img {
+            width: 120%;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .form-section {
+            max-width: 400px;
+        }
+        .form-section h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .form-section p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .form-section input {
+            border-radius: 20px;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        .form-section button {
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .form-section button:hover {
+            background-color: #4c1a93;
+            border-color: #4c1a93;
+        }
+        .footer1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .footer1 p {
+            font-size: 24px;
+        }
+        .alumni-section {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #fff;
+        }
+        .alumni-section h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+        .alumni-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            transition: transform 0.3s ease;
+        }
+        .alumni-card:hover {
+            transform: translateY(-5px);
+        }
+        .alumni-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .alumni-card h4 {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .alumni-card p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        .alumni-card button {
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .alumni-card .btn-primary:hover {
+            background-color: #4c1a93;
+            border-color: #4c1a93;
+        }
+        .alumni-card .btn-outline-secondary:hover {
+            background-color: #f0f0f0;
+        }
+        .stars {
+            color: #ffc107;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        .pagination-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .pagination-buttons button {
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+        .pagination-buttons button:hover {
+            background-color: #e9e9e9;
+        }
+        .footer {
+            background-color: #f9f9f9;
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-family: 'Poppins', sans-serif;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer div {
+            flex: 1;
+            min-width: 200px;
+        }
+        .footer h5 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .footer p {
+            font-size: 14px;
+            margin: 0 0 15px;
+            color: #555;
+        }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer ul li {
+            margin: 8px 0;
+        }
+        .footer ul li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .footer ul li a:hover {
+            color: #007bff;
+        }
+        .footer .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .footer .social-icons a {
+            font-size: 16px;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .footer .social-icons a:hover {
+            color: #7b2fb8;
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 20px;
+            }
+            .illustrations img {
+                width: 80%;
+                margin: 0 auto 30px;
+            }
+            .form-section {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1><i class="fas fa-users"></i> AlumNet Connect</h1>
+        </div>
+        <div>
+            <a class="btn btn-light" href="signin.html">Sign In</a> 
+            <a class="btn btn-light" href="register.html">Register</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="illustrations">
+            <img src="aaaaa.png" alt="Illustrations">
+        </div>
+        <div class="form-section">
+            <h1>Welcome to Our Connection World!</h1>
+            <p>Connect, Collaborate, and Interact with top alumni and peers.</p>
+            <input type="text" class="form-control" placeholder="Connect Now">
+            <button class="btn btn-primary mt-3"><i class="fab fa-google"></i> Sign Up with Google</button>
+        </div>
+    </main>
+
+    <footer class="footer1">
+        <hr>
+        <p>⭐⭐⭐⭐⭐</p>
+    </footer>
+
+    <section class="alumni-section">
+        <h1>Meet Our Best Alumni</h1>
+        <div id="alumni-card" class="alumni-card">
+            <img id="alumni-photo" src="https://via.placeholder.com/80" alt="Alumni Photo">
+            <div class="stars" id="alumni-stars">⭐⭐⭐⭐⭐</div>
+            <h4 id="alumni-name">Paul Starr</h4>
+            <p id="alumni-description">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, 
+                a consequatur recusandae.
+            </p>
+            <button class="btn btn-primary">Connect Now</button>
+            <button class="btn btn-outline-secondary">View Profile</button>
+        </div>
+        <div class="pagination-buttons">
+            <button id="prev-button" class="btn btn-outline-primary">Previous</button>
+            <button id="next-button" class="btn btn-outline-primary">Next</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div>
+            <h5>AlumNet Rajasthan</h5>
+            <p>Where Education Meets Social Media, Talent Meets Great Talent & Empower Connections for Lifelong Success.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fab fa-dribbble"></i> Dribbble</a>
+            </div>
+        </div>
+        <div>
+            <h5>Services</h5>
+            <ul>
+                <li><a href="#">1on1 Coaching</a></li>
+                <li><a href="#">Company Review</a></li>
+                <li><a href="#">Accounts Review</a></li>
+                <li><a href="#">HR Consulting</a></li>
+                <li><a href="#">SEO Optimisation</a></li>
+            </ul>
+        </div>
+        <div>
+            <h5>Company</h5>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Meet the Team</a></li>
+                <li><a href="#">Accounts Review</a></li>
+            </ul>
+        </div>
+        <div>
+            <h5>Helpful Links</h5>
+            <ul>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Live Chat</a></li>
+            </ul>
+        </div>
+        <div>
+            <h5>Legal</h5>
+            <ul>
+                <li><a href="#">Accessibility</a></li>
+                <li><a href="#">Returns Policy</a></li>
+                <li><a href="#">Refund Policy</a></li>
+                <li><a href="#">Hiring Statistics</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        const alumniProfiles = [
+            {
+                photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxJmo7Gos87m7EJww0lyjRs3Els4CAsTUJDDgM1pvkmPyk55RvzytH6fYLKaMkO2oUcTY&usqp=CAU",
+                stars: "⭐⭐⭐⭐⭐",
+                name: "Paul Starr",
+                description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt."
+            },
+            {
+                photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShKuRQyTPYEDgoJxxcu-BaAQb_RSRuGlOnww&s",
+                stars: "⭐⭐⭐⭐",
+                name: "Anna Lee",
+                description: "Aenean commodo ligula eget dolor. Nullam dictum felis eu pede mollis pretium."
+            },
+            {
+                photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn90SPux81josFsXHMIkS6yKRJdIXzGnJSNQ&s",
+                stars: "⭐⭐⭐⭐⭐",
+                name: "John Doe",
+                description: "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem."
+            }
+        ];
+    
+        let currentIndex = 0;
+    
+        const alumniPhoto = document.getElementById("alumni-photo");
+        const alumniStars = document.getElementById("alumni-stars");
+        const alumniName = document.getElementById("alumni-name");
+        const alumniDescription = document.getElementById("alumni-description");
+    
+        const updateProfile = () => {
+            const profile = alumniProfiles[currentIndex];
+            alumniPhoto.src = profile.photo;
+            alumniStars.textContent = profile.stars;
+            alumniName.textContent = profile.name;
+            alumniDescription.textContent = profile.description;
+        };
+    
+        document.getElementById("prev-button").addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + alumniProfiles.length) % alumniProfiles.length;
+            updateProfile();
+        });
+    
+        document.getElementById("next-button").addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % alumniProfiles.length;
+            updateProfile();
+        });
+    
+        // Initialize with the first profile
+        updateProfile();
+    </script>
+</body>
+</html>

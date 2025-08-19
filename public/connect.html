@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlumNet Connect</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #4C1D95;
+            --secondary-color: #6D28D9;
+            --accent-color: #3B82F6;
+            --text-light: #FFFFFF;
+            --text-dark: #1F2937;
+            --bg-light: #F3F4F6;
+            --bg-dark: #1F2937;
+        }
+
+        body {
+            background-color: var(--bg-light);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+        }
+
+        .char-count {
+            font-size: 0.875rem;
+            color: #6B7280;
+            text-align: right;
+            margin-top: 0.25rem;
+        }
+
+        /* Navigation Styles */
+        .header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-circle i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-item span {
+            padding-left: 0.5rem;
+            /* Adjust the value as needed */
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 1.5rem auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .profile-section {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .profile-image {
+            width: 60px;
+            /* Adjust the size as needed */
+            height: 60px;
+            border-radius: 50%;
+            /* Makes it circular */
+            overflow: hidden;
+            border: 2px solid #fff;
+            /* Optional border */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures the image fits within the circle */
+        }
+
+        /* Main Content Styles */
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .sidebar-item:hover {
+            background-color: var(--bg-light);
+        }
+
+        .sidebar-item.active {
+            background-color: var(--bg-light);
+            font-weight: 500;
+        }
+
+        /* Connection Cards Styles */
+        .connections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .connection-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .connection-header {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .connection-header .profile-image {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-light);
+            border: 2px solid var(--bg-dark);
+        }
+
+        .connection-header .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .profile-image {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: var(--bg-light);
+        }
+
+        .connection-info h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+
+        .connection-details {
+            margin: 1rem 0;
+        }
+
+        .detail-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .interest-tag {
+            font-size: 0.875rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            background-color: var(--bg-light);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        /* Profile Modal Styles */
+        .profile-modal {
+            width: 95%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .profile-header {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-header .profile-image {
+            width: 128px;
+            height: 128px;
+        }
+
+        .profile-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .profile-section {
+            border-top: 1px solid #E5E7EB;
+            padding-top: 1rem;
+        }
+
+        .profile-section h3 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Create Post Button */
+        .create-post-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            border: none;
+        }
+
+        .create-post-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .connections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chat-overlay {
+            position: fixed;
+            bottom: 0;
+            right: 2rem;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 0.5rem 0.5rem 0 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .chat-header {
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 0.5rem 0.5rem 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .chat-header .profile-image {
+            width: 40px;
+            height: 40px;
+        }
+
+        .chat-header .online-indicator {
+            width: 8px;
+            height: 8px;
+            background: #10B981;
+            border-radius: 50%;
+            margin-left: 0.25rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+
+        .message.received {
+            background: var(--bg-light);
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+
+        .message.sent {
+            background: var(--accent-color);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+        }
+
+        .message-time {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            opacity: 0.8;
+        }
+
+        .chat-input-container {
+            padding: 1rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .chat-input-wrapper {
+            position: relative;
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 0.75rem;
+            padding-right: 3rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            resize: none;
+        }
+
+        .chat-suggestions {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            margin-bottom: 0.5rem;
+            display: none;
+        }
+
+        .suggestion-item {
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+        }
+
+        .suggestion-item:hover {
+            background: var(--bg-light);
+        }
+
+        .send-button {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Update connection button styles */
+        .btn-primary.connected {
+            background-color: #10B981;
+        }
+
+        .btn-primary.connected:hover {
+            background-color: #059669;
+        }
+
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu span {
+                display: none;
+            }
+
+            .nav-item {
+                padding: 0.5rem;
+            }
+        }
+        .profile-header .profile-image {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--bg-light);
+    border: 2px solid var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.profile-header .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+rofile-header .profile-image {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--bg-light);
+    border: 2px solid var(--bg-dark);
+    margin-bottom: 1rem;
+}
+
+.profile-header .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-header p {
+    margin: 0.25rem 0;
+    color: var(--text-dark);
+}
+
+.profile-section {
+    margin-top: 1rem;
+}
+
+.profile-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.interests .interest-tag {
+    display: inline-block;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h1>AlumNet Connect</h1>
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-item active">
+
+                    <a href="index.html" style="text-decoration: none; color: white;"> <i
+                            class="fas fa-home"></i><span>Home</span></a>
+                </div>
+                <div class="nav-item">
+
+                    <!-- <span >Connect</span> -->
+                    <a href="connect.html" style="text-decoration: none; color: white;"> <i
+                            class="fas fa-users"></i><span>Connect</span></a>
+                </div>
+                <div class="nav-item">
+
+                    <a href="event.html" style="text-decoration: none; color: white;"><i
+                            class="fas fa-calendar"></i><span>Events</span></a>
+                </div>
+                <div class="nav-item">
+
+                    <a href="resource.html" style="text-decoration: none; color: white;"> <i
+                            class="fas fa-book"></i><span>Resources</span></a>
+                </div>
+                <div class="nav-item">
+
+                    <a href="collaboration.html" style="text-decoration: none; color: white;"> <i
+                            class="fas fa-comments"></i><span>Collaborate</span></a>
+
+                </div>
+            </nav>
+            <div class="user-menu">
+                <i class="fas fa-bell"></i>
+                <div class="profile-image">
+                    <a href="profile.html" style="text-decoration: none; color: inherit;">
+                        <img src="https://i.pinimg.com/736x/8c/4c/cb/8c4ccbc7c4e16aa94b4a61ef05f59af4.jpg"
+                            alt="Profile Image"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="#" class="sidebar-item active">
+                    <i class="fas fa-compass"></i>
+                    Explore connections
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-user-graduate"></i>
+                    Alumni Connections
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-users"></i>
+                    Student Connections
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-link"></i>
+                    My connections
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-bell"></i>
+                    Connection Requests
+                    <span class="badge">2</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-user-group"></i>
+                    Explore Groups
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-comments"></i>
+                    Messaging
+                </a>
+            </div>
+        </aside>
+
+        <!-- Connections Grid -->
+        <main class="connections-grid">
+            <!-- Connection Cards will be dynamically added here -->
+        </main>
+    </div>
+
+    <!-- Create Post Button -->
+    <button class="create-post-btn" id="createPostBtn">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Create Post Modal -->
+    <div class="modal-overlay" id="createPostModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Create a New Post</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="createPostForm">
+                <div class="form-group">
+                    <label for="postType">Post Type</label>
+                    <select id="postType" required>
+                        <option value="media">Media</option>
+                        <option value="article">Article</option>
+                        <option value="event">Event</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="postTitle">Title</label>
+                    <input type="text" id="postTitle" maxlength="100" required>
+                    <div class="char-count"><span id="titleCount">0</span>/100</div>
+                </div>
+                <div class="form-group">
+                    <label for="postContent">Content</label>
+                    <textarea id="postContent" rows="4" maxlength="10000" required></textarea>
+                    <div class="char-count"><span id="contentCount">0</span>/10000</div>
+                </div>
+                <div class="form-group">
+                    <label for="mediaUrl">Media URL</label>
+                    <input type="url" id="mediaUrl" placeholder="e.g. https://example.com/image.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="link">Link</label>
+                    <input type="url" id="link" placeholder="e.g. https://example.com">
+                </div>
+                <div class="form-group">
+                    <label for="size">Size</label>
+                    <input type="text" id="size" placeholder="e.g. 35">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Create Post <i class="fas fa-pen"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="modal profile-modal">
+            <div class="modal-header">
+                <h2>Profile Details</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="profile-content">
+                <!-- Profile content will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+    <div class="chat-overlay" id="chatOverlay">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="profile-image"></div>
+                <div>
+                    <h3 class="chat-user-name">User Name</h3>
+                    <div class="online-indicator"></div>
+                </div>
+            </div>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be dynamically added here -->
+        </div>
+        <div class="chat-input-container">
+            <div class="chat-input-wrapper">
+                <textarea class="chat-input" placeholder="Type a message..." rows="1"></textarea>
+                <div class="chat-suggestions">
+                    <div class="suggestion-item">Hello!</div>
+                    <div class="suggestion-item">Thank you for connecting!</div>
+                    <div class="suggestion-item">Would you like to collaborate?</div>
+                </div>
+                <button class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Sample connection data
+        const connections = [
+    {
+        id: 1,
+        name: "Gatlin Ramsey",
+        type: "Alumni",
+        education: "B.Sc. Software Engineering - Class of 2021",
+        currentRole: "Backend Developer at InnovateX",
+        about: "Aspiring developer eager to build web applications.",
+        image: "https://randomuser.me/api/portraits/men/1.jpg",
+        interests: ["Backend Development", "Cloud Computing"],
+        experience: [
+            {
+                role: "Backend Developer",
+                company: "InnovateX",
+                period: "2021 - Present",
+                description: "Developing scalable backend solutions using Node.js and Python."
+            }
+        ],
+        education: [
+            {
+                degree: "B.Sc. Software Engineering",
+                institution: "Tech University",
+                year: "2021"
+            }
+        ]
+    },
+    {
+        id: 2,
+        name: "Lyric Bush",
+        type: "Alumni",
+        education: "B.Sc. Computer Science - Class of 2022",
+        currentRole: "Frontend Developer at ABC Corp",
+        about: "Full-stack developer with a focus on user experience.",
+        image: "https://randomuser.me/api/portraits/women/2.jpg",
+        interests: ["Frontend Development", "UI/UX Design"],
+        experience: [
+            {
+                role: "Frontend Developer",
+                company: "ABC Corp",
+                period: "2022 - Present",
+                description: "Building responsive web applications using React and TypeScript."
+            }
+        ],
+        education: [
+            {
+                degree: "B.Sc. Computer Science",
+                institution: "Tech University",
+                year: "2022"
+            }
+        ]
+    }
+];
+        
+
+        // Function to create connection cards
+        function createConnectionCards() {
+            const connectionsGrid = document.querySelector('.connections-grid');
+            connectionsGrid.innerHTML = '';
+
+            connections.forEach(connection => {
+                const card = document.createElement('div');
+                card.className = 'connection-card';
+                card.innerHTML = `
+            <div class="connection-header">
+                <div class="profile-image">
+                    <img src="${connection.image}" alt="${connection.name}'s Profile Picture">
+                </div>
+                <div class="connection-info">
+                    <h3>${connection.name} <span class="badge">${connection.type}</span></h3>
+                    <p>${connection.education}</p>
+                </div>
+            </div>
+            <div class="connection-details">
+                <div class="detail-item">
+                    <div class="detail-label">Currently:</div>
+                    <div>${connection.currentRole}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">About:</div>
+                    <div>${connection.about}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Interests:</div>
+                    <div class="interests">
+                        ${connection.interests.map(interest => `
+                            <span class="interest-tag">${interest}</span>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+            <div class="card-actions">
+                <button class="btn btn-primary">Connect with ${connection.name.split(' ')[0]}</button>
+                <button class="btn btn-secondary" onclick="showProfile(${connection.id})">View Profile</button>
+            </div>
+        `;
+                connectionsGrid.appendChild(card);
+            });
+        }
+
+
+        function showProfile(id) {
+    const connection = connections.find(c => c.id === id); // Fetch the connection by ID
+    const profileContent = document.querySelector('.profile-content');
+
+    profileContent.innerHTML = `
+        <div class="profile-header">
+            <div class="profile-image">
+                <img src="${connection.image}" alt="${connection.name}'s Profile Picture">
+            </div>
+            <div>
+                <h2>${connection.name}</h2>
+                <p><strong>Current Role:</strong> ${connection.currentRole}</p>
+                <p><strong>Education:</strong> ${connection.education}</p>
+            </div>
+        </div>
+        <div class="profile-section">
+            <h3>About</h3>
+            <p>${connection.about}</p>
+        </div>
+        <div class="profile-section">
+            <h3>Experience</h3>
+            ${connection.experience.map(exp => `
+                <div class="detail-item">
+                    <h4>${exp.role}</h4>
+                    <p>${exp.company} | ${exp.period}</p>
+                    <p>${exp.description}</p>
+                </div>
+            `).join('')}
+        </div>
+        <div class="profile-section">
+            <h3>Education</h3>
+            ${connection.education.map(edu => `
+                <div class="detail-item">
+                    <h4>${edu.degree}</h4>
+                    <p>${edu.institution} | ${edu.year}</p>
+                </div>
+            `).join('')}
+        </div>
+        <div class="profile-section">
+            <h3>Interests</h3>
+            <div class="interests">
+                ${connection.interests.map(interest => `
+                    <span class="interest-tag">${interest}</span>
+                `).join('')}
+            </div>
+        </div>
+    `;
+
+    // Show the modal
+    document.getElementById('profileModal').style.display = 'flex';
+}
+
+
+        // Modal functionality
+        function setupModals() {
+            const createPostBtn = document.getElementById('createPostBtn');
+            const createPostModal = document.getElementById('createPostModal');
+            const profileModal = document.getElementById('profileModal');
+            const closeButtons = document.querySelectorAll('.close-modal');
+
+            createPostBtn.addEventListener('click', () => {
+                createPostModal.style.display = 'flex';
+            });
+
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    createPostModal.style.display = 'none';
+                    profileModal.style.display = 'none';
+                });
+            });
+
+            // Close modals when clicking outside
+            [createPostModal, profileModal].forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Character count functionality
+        function setupCharacterCount() {
+            const titleInput = document.getElementById('postTitle');
+            const contentInput = document.getElementById('postContent');
+            const titleCount = document.getElementById('titleCount');
+            const contentCount = document.getElementById('contentCount');
+
+            titleInput.addEventListener('input', () => {
+                titleCount.textContent = titleInput.value.length;
+            });
+
+            contentInput.addEventListener('input', () => {
+                contentCount.textContent = contentInput.value.length;
+            });
+        }
+
+        // Form submission
+        function setupForm() {
+            const form = document.getElementById('createPostForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Here you would typically send the data to a server
+                alert('Post created successfully!');
+                document.getElementById('createPostModal').style.display = 'none';
+                form.reset();
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            createConnectionCards();
+            setupModals();
+            setupCharacterCount();
+            setupForm();
+        });
+        function setupChat() {
+            const chatOverlay = document.getElementById('chatOverlay');
+            const chatMessages = document.getElementById('chatMessages');
+            const chatInput = document.querySelector('.chat-input');
+            const sendButton = document.querySelector('.send-button');
+            const closeChat = document.querySelector('.close-chat');
+            const suggestions = document.querySelector('.chat-suggestions');
+
+            // Sample messages
+            const sampleMessages = [
+                { text: "Hi there! Thanks for connecting!", type: "received", time: "9:30 AM" },
+                { text: "Hello! Happy to connect with you!", type: "sent", time: "9:31 AM" },
+                { text: "Would you be interested in collaborating on a project?", type: "received", time: "9:32 AM" }
+            ];
+
+            // Function to add a message to the chat
+            function addMessage(text, type = 'sent') {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${type}`;
+                const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                messageDiv.innerHTML = `
+                    ${text}
+                    <div class="message-time">${time}</div>
+                `;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // Load sample messages
+            function loadSampleMessages() {
+                chatMessages.innerHTML = '';
+                sampleMessages.forEach(msg => {
+                    addMessage(msg.text, msg.type);
+                });
+            }
+
+            // Handle connect button click
+            document.querySelectorAll('.btn-primary').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    if (!this.classList.contains('connected')) {
+                        this.classList.add('connected');
+                        this.textContent = 'Message';
+                        // Show connection success message
+                        alert('Connected successfully!');
+                    } else {
+                        // Update chat header with user info
+                        const card = this.closest('.connection-card');
+                        const userName = card.querySelector('.connection-info h3').textContent.split(' ')[0];
+                        document.querySelector('.chat-user-name').textContent = userName;
+
+                        // Show chat overlay
+                        chatOverlay.style.display = 'flex';
+                        loadSampleMessages();
+                    }
+                });
+            });
+
+            // Send message functionality
+            function sendMessage() {
+                const text = chatInput.value.trim();
+                if (text) {
+                    addMessage(text, 'sent');
+                    chatInput.value = '';
+
+                    // Simulate received message
+                    setTimeout(() => {
+                        addMessage('Thanks for your message')
+                    }, 1000);
+                }
+            }
+
+            // Event listeners
+            sendButton.addEventListener('click', sendMessage);
+
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            closeChat.addEventListener('click', () => {
+                chatOverlay.style.display = 'none';
+            });
+
+            // Show/hide suggestions
+            chatInput.addEventListener('focus', () => {
+                suggestions.style.display = 'block';
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!suggestions.contains(e.target) && e.target !== chatInput) {
+                    suggestions.style.display = 'none';
+                }
+            });
+
+            // Handle suggestion clicks
+            document.querySelectorAll('.suggestion-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    chatInput.value = item.textContent;
+                    suggestions.style.display = 'none';
+                    chatInput.focus();
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createConnectionCards();
+            setupModals();
+            setupCharacterCount();
+            setupForm();
+            setupChat(); // Uncomment this line
+        });
+    </script>
+</body>
+
+</html>

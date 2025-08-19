@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlumNet Connect</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="Home.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h1>AlumNet Connect</h1>
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-item active">
+                    
+                     <a href="index.html" style="text-decoration: none; color: white;">    <i class="fas fa-home"></i><span>Home</span></a>
+                </div>
+                <div class="nav-item">
+                   
+                    <!-- <span >Connect</span> -->
+                    <a href="connect.html" style="text-decoration: none; color: white;"> <i class="fas fa-users"></i><span>Connect</span></a>
+                </div>
+                <div class="nav-item">
+                    
+                    <a href="event.html" style="text-decoration: none; color: white;"><i class="fas fa-calendar"></i><span>Events</span></a>
+                </div>
+                <div class="nav-item">
+                 
+                    <a href="resource.html" style="text-decoration: none; color: white;">   <i class="fas fa-book"></i><span>Resources</span></a>
+                </div>
+                <div class="nav-item">
+              
+                    <a href="collaboration.html" style="text-decoration: none; color: white;">      <i class="fas fa-comments"></i>    <span>Collaborate</span></a>
+                    
+                </div>
+            </nav>
+            <div class="user-menu">
+                <i class="fas fa-bell"></i>
+                <div class="profile-image">
+                    <a href="profile.html" style="text-decoration: none; color: inherit;">
+                    <img src="https://i.pinimg.com/736x/8c/4c/cb/8c4ccbc7c4e16aa94b4a61ef05f59af4.jpg" alt="Profile Image"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="https://i.pinimg.com/736x/8c/4c/cb/8c4ccbc7c4e16aa94b4a61ef05f59af4.jpg" alt="Profile Image">
+                </div>
+                <div class="profile-info">
+                    <h2>Sarah Wilson</h2>
+                    <p>Full Stack Developer</p>
+                </div>
+            </div>
+            <nav class="sidebar-menu">
+                <div class="sidebar-item">
+                    <i class="fas fa-user"></i>
+                    
+                    <a href="profile.html" style="text-decoration: none; color:inherit"> <span>My Profile</span></a>
+
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-bookmark"></i>
+                    <span>My Feeds & Bookmarks</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-comments"></i>
+                    <span>Conversations</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-users"></i>
+                    <span>Groups Joined</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-star"></i>
+                    <span>Starred Events</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-robot"></i>
+                    <span>Career Guidance AI</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Learn with AI</span>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-feed">
+            <div class="create-post">
+                <div class="post-input-container">
+                    <div class="profile-image">
+                        <img src="https://i.pinimg.com/736x/8c/4c/cb/8c4ccbc7c4e16aa94b4a61ef05f59af4.jpg" alt="Profile Image">
+                    </div>
+                    <input type="text" class="post-input" placeholder="Write a post and share your thoughts...">
+                    <button class="create-button">Create</button>
+                </div>
+            </div>
+
+            <!-- <div class="post-card">
+                <div class="post-header">
+                    <div class="post-user">
+                        <div class="profile-image"></div>
+                        <div>
+                            <h3>Sarah Wilson</h3>
+                            <p>2 hours ago</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="post-content">
+                    <p>Excited to share my latest project on AI-driven analytics! 🚀</p>
+                </div>
+                <img src="/api/placeholder/600/400" alt="Project preview" class="post-image">
+                <div class="post-actions">
+                    <div class="action-button">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span>Like</span>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-comment"></i>
+                        <span>Comment</span>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-share"></i>
+                        <span>Share</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div> -->
+
+
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-user">
+                <div class="profile-image">
+                    <img src="https://i.pinimg.com/originals/6a/e8/27/6ae827fcca32bf53c2a286efeb0b145d.jpg" alt="Profile Image">
+                </div>
+                <div>
+                    <h3>vishal yadav</h3>
+                    <p>9 hours ago</p>
+                </div>
+            </div>
+            <div class="post-menu">
+                <div class="post-menu-button">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="post-menu-dropdown">
+                    <div class="menu-item" data-action="edit">
+                        <i class="fas fa-pen"></i>
+                        <span>Edit post</span>
+                    </div>
+                    <div class="menu-item" data-action="bookmark">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Bookmark</span>
+                    </div>
+                    <div class="menu-item" data-action="copy">
+                        <i class="fas fa-link"></i>
+                        <span>Copy link</span>
+                    </div>
+                    <div class="menu-item" data-action="delete">
+                        <i class="fas fa-trash"></i>
+                        <span>Delete post</span>
+                    </div>
+                    <div class="menu-item" data-action="report">
+                        <i class="fas fa-flag"></i>
+                        <span>Report post</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="post-content">
+            <p> Microsoft AI Fundamentals Day 💻✨
+
+                Amazing experience at Microsoft AI Fundamentals Day in Noida! 🚀 Insightful sessions on AI & DevOps by Nirupama Singh and Jatin Bhalla. Grateful for the learnings, connections, and opportunities.
+                
+                Thank you, Microsoft, for this impactful event! 🙌
+                
+                #MicrosoftAI #DevOps #LearningJourney</p>
+        </div>
+        <div class="edit-form">
+            <textarea class="edit-input">The Future of Artificial Intelligence</textarea>
+            <div class="edit-buttons">
+                <button class="save-edit">Save</button>
+                <button class="cancel-edit">Cancel</button>
+            </div>
+        </div>
+        <img src="me.JPG"
+            alt="AI Technology" class="post-image">
+        <div class="post-actions">
+            <div class="action-button">
+                <i class="fas fa-thumbs-up"></i>
+                <span>Like</span>
+            </div>
+            <div class="action-button">
+                <i class="fas fa-comment"></i>
+                <span>Comment</span>
+            </div>
+            <div class="action-button">
+                <i class="fas fa-share"></i>
+                <span>Share</span>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+    
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-user">
+                <div class="profile-image">
+                    <img src="https://static.vecteezy.com/system/resources/previews/029/711/176/non_2x/developer-with-ai-generated-free-png.png" alt="Profile Image">
+                </div>
+                <div>
+                    <h3>vishal yadav</h3>
+                    <p>9 hours ago</p>
+                </div>
+            </div>
+            <div class="post-menu">
+                <div class="post-menu-button">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="post-menu-dropdown">
+                    <div class="menu-item" data-action="edit">
+                        <i class="fas fa-pen"></i>
+                        <span>Edit post</span>
+                    </div>
+                    <div class="menu-item" data-action="bookmark">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Bookmark</span>
+                    </div>
+                    <div class="menu-item" data-action="copy">
+                        <i class="fas fa-link"></i>
+                        <span>Copy link</span>
+                    </div>
+                    <div class="menu-item" data-action="delete">
+                        <i class="fas fa-trash"></i>
+                        <span>Delete post</span>
+                    </div>
+                    <div class="menu-item" data-action="report">
+                        <i class="fas fa-flag"></i>
+                        <span>Report post</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="post-content">
+            <p> Azure Developer Day 🚀
+
+                Amazing experience at Microsoft Noida with Reskill Azure Developer Community! 🌐 Inspiring session by Jatin Bhalla on AI & DevOps and engaging discussions with brilliant peers like Rashmi Kumari, Parkhi Bhandula, and more.
+                
+                Thank you, Reskill & Nirupama Singh Ma’am, for this opportunity! 🙌
+                
+                #AzureDeveloperDay #AI #DevOps #LearningTogether</p>
+        </div>
+        <div class="edit-form">
+            <textarea class="edit-input">The Future of Artificial Intelligence</textarea>
+            <div class="edit-buttons">
+                <button class="save-edit">Save</button>
+                <button class="cancel-edit">Cancel</button>
+            </div>
+        </div>
+        <img src="me2.JPG"
+            alt="AI Technology" class="post-image">
+        <div class="post-actions">
+            <div class="action-button">
+                <i class="fas fa-thumbs-up"></i>
+                <span>Like</span>
+            </div>
+            <div class="action-button">
+                <i class="fas fa-comment"></i>
+                <span>Comment</span>
+            </div>
+            <div class="action-button">
+                <i class="fas fa-share"></i>
+                <span>Share</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- bvvvvvv -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="post-user">
+                        <div class="profile-image">
+                            <img src="https://static-00.iconduck.com/assets.00/web-developer-illustration-2005x2048-fal2biag.png" alt="Profile Image">
+                        </div>
+                        <div>
+                            <h3>vishal yadav</h3>
+                            <p>9 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="post-menu">
+                        <div class="post-menu-button">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <div class="post-menu-dropdown">
+                            <div class="menu-item" data-action="edit">
+                                <i class="fas fa-pen"></i>
+                                <span>Edit post</span>
+                            </div>
+                            <div class="menu-item" data-action="bookmark">
+                                <i class="fas fa-bookmark"></i>
+                                <span>Bookmark</span>
+                            </div>
+                            <div class="menu-item" data-action="copy">
+                                <i class="fas fa-link"></i>
+                                <span>Copy link</span>
+                            </div>
+                            <div class="menu-item" data-action="delete">
+                                <i class="fas fa-trash"></i>
+                                <span>Delete post</span>
+                            </div>
+                            <div class="menu-item" data-action="report">
+                                <i class="fas fa-flag"></i>
+                                <span>Report post</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>🎉 Excited to Share Our Hackathon Victory! 🚀
+
+                        I am thrilled to announce that my team and I have emerged as winners at the [Hackathon Name/Location]! 🏆 This incredible journey was filled with learning, creativity, collaboration, and the joy of solving real-world problems with innovative solutions.</p>
+                </div>
+                <div class="edit-form">
+                    <textarea class="edit-input">The Future of Artificial Intelligence</textarea>
+                    <div class="edit-buttons">
+                        <button class="save-edit">Save</button>
+                        <button class="cancel-edit">Cancel</button>
+                    </div>
+                </div>
+                <img src="https://mcds.cs.cmu.edu/sites/default/files/facebookhackathon_2016.jpg"
+                    alt="AI Technology" class="post-image">
+                <div class="post-actions">
+                    <div class="action-button">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span>Like</span>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-comment"></i>
+                        <span>Comment</span>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-share"></i>
+                        <span>Share</span>
+                    </div>
+                </div>
+            </div>
+            <!-- ////vvvvvvvvv -->
+
+
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="post-user">
+                        <div class="profile-image">
+                            <img src="https://i.pinimg.com/control2/736x/3f/e8/23/3fe82308206d42833ae4d77ed66f0fb3.jpg" alt="Profile Image">
+                        </div>
+                        <div>
+                            <h3>saurabh tiwari</h3>
+                            <p>9 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="post-menu">
+                        <div class="post-menu-button">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <div class="post-menu-dropdown">
+                            <div class="menu-item" data-action="edit">
+                                <i class="fas fa-pen"></i>
+                                <span>Edit post</span>
+                            </div>
+                            <div class="menu-item" data-action="bookmark">
+                                <i class="fas fa-bookmark"></i>
+                                <span>Bookmark</span>
+                            </div>
+                            <div class="menu-item" data-action="copy">
+                                <i class="fas fa-link"></i>
+                                <span>Copy link</span>
+                            </div>
+                            <div class="menu-item" data-action="delete">
+                                <i class="fas fa-trash"></i>
+                                <span>Delete post</span>
+                            </div>
+                            <div class="menu-item" data-action="report">
+                                <i class="fas fa-flag"></i>
+                                <span>Report post</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>The value of being a data engineer is not in knowing all the tools, but in understanding how they fit together.</p>
+                </div>
+                <div class="edit-form">
+                    <textarea class="edit-input">The Future of Artificial Intelligence</textarea>
+                    <div class="edit-buttons">
+                        <button class="save-edit">Save</button>
+                        <button class="cancel-edit">Cancel</button>
+                    </div>
+                </div>
+                <img src="https://i.pinimg.com/control2/736x/75/1b/49/751b494eedb8960206aaa5a5dd053627.jpg"
+                    alt="AI Technology" class="post-image">
+                <div class="post-actions">
+                    <div class="action-button">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span>Like</span>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-comment"></i>
+                        <span>Comment</span>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-share"></i>
+                        <span>Share</span>
+                    </div>
+                </div>
+            </div>
+            <!-- vvvv -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="post-user">
+                        <div class="profile-image">
+                            <img src="https://i.pinimg.com/originals/6a/e8/27/6ae827fcca32bf53c2a286efeb0b145d.jpg" alt="Profile Image">
+                        </div>
+                        <div>
+                            <h3>sakshi sharma</h3>
+                            <p>9 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="post-menu">
+                        <div class="post-menu-button">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <div class="post-menu-dropdown">
+                            <div class="menu-item" data-action="edit">
+                                <i class="fas fa-pen"></i>
+                                <span>Edit post</span>
+                            </div>
+                            <div class="menu-item" data-action="bookmark">
+                                <i class="fas fa-bookmark"></i>
+                                <span>Bookmark</span>
+                            </div>
+                            <div class="menu-item" data-action="copy">
+                                <i class="fas fa-link"></i>
+                                <span>Copy link</span>
+                            </div>
+                            <div class="menu-item" data-action="delete">
+                                <i class="fas fa-trash"></i>
+                                <span>Delete post</span>
+                            </div>
+                            <div class="menu-item" data-action="report">
+                                <i class="fas fa-flag"></i>
+                                <span>Report post</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>The Future of Artificial Intelligence</p>
+                </div>
+                <div class="edit-form">
+                    <textarea class="edit-input">The Future of Artificial Intelligence</textarea>
+                    <div class="edit-buttons">
+                        <button class="save-edit">Save</button>
+                        <button class="cancel-edit">Cancel</button>
+                    </div>
+                </div>
+                <img src="https://i.pinimg.com/control2/736x/b4/aa/b6/b4aab6264ff1103fb98248eafa64023f.jpg"
+                    alt="AI Technology" class="post-image">
+                <div class="post-actions">
+                    <div class="action-button">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span>Like</span>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-comment"></i>
+                        <span>Comment</span>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-share"></i>
+                        <span>Share</span>
+                    </div>
+                </div>
+            </div>
+
+<!-- vvvv -->
+
+            <div class="delete-confirmation">
+                <h3>Delete Post?</h3>
+                <p>Are you sure you want to delete this post? This action cannot be undone.</p>
+                <div class="confirmation-buttons">
+                    <button class="confirm-button confirm-delete">Delete</button>
+                    <button class="confirm-button cancel-delete">Cancel</button>
+                </div>
+            </div>
+
+            <div class="overlay"></div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Navigation item click handler
+                    document.querySelectorAll('.nav-item').forEach(item => {
+                        item.addEventListener('click', function () {
+                            // Remove active class from all nav items
+                            document.querySelectorAll('.nav-item').forEach(navItem => {
+                                navItem.classList.remove('active');
+                            });
+                            // Add active class to clicked item
+                            this.classList.add('active');
+                        });
+                    });
+                
+                    // Create post functionality
+                    const createButton = document.querySelector('.create-button');
+                    const postInput = document.querySelector('.post-input');
+                    const mainFeed = document.querySelector('.main-feed');
+                
+                    createButton.addEventListener('click', function() {
+                        const content = postInput.value.trim(); // Get trimmed input
+                        if (content) {
+                            console.log('Creating post with content:', content);
+                
+                            // Create a new post element
+                            const newPost = document.createElement('div');
+                            newPost.className = 'post-card';
+                            newPost.innerHTML = `
+                                <div class="post-header">
+                                    <div class="post-user">
+                                        <div class="profile-image">
+                                            <img src="https://i.pinimg.com/736x/8c/4c/cb/8c4ccbc7c4e16aa94b4a61ef05f59af4.jpg" alt="Profile Image">
+                                        </div>
+                                        <div>
+                                            <h3>Sarah Wilson</h3>
+                                            <p>Just now</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="post-content">
+                                    <p>${content}</p>
+                                </div>
+                                <div class="post-actions">
+                                    <div class="action-button">
+                                        <i class="fas fa-thumbs-up"></i>
+                                        <span>Like</span>
+                                    </div>
+                                    <div class="action-button">
+                                        <i class="fas fa-comment"></i>
+                                        <span>Comment</span>
+                                    </div>
+                                    <div class="action-button">
+                                        <i class="fas fa-share"></i>
+                                        <span>Share</span>
+                                    </div>
+                                </div>
+                            `;
+                
+                            // Insert new post at the top of the feed
+                            mainFeed.insertBefore(newPost, mainFeed.firstChild);
+                
+                            // Clear the input field
+                            postInput.value = '';
+                        } else {
+                            console.warn('Post content is empty');
+                            alert('Please enter some text for the post.');
+                        }
+                    });
+                
+                    // Like functionality
+                    document.addEventListener('click', function (e) {
+                        if (e.target.closest('.action-button')) {
+                            const button = e.target.closest('.action-button');
+                            button.classList.toggle('active');
+                        }
+                    });
+                
+                    // Post menu dropdown functionality
+                    document.addEventListener('click', function (e) {
+                        const menuButton = e.target.closest('.post-menu-button');
+                        const menuDropdown = e.target.closest('.post-menu-dropdown');
+                        const allDropdowns = document.querySelectorAll('.post-menu-dropdown');
+                
+                        if (menuButton) {
+                            const dropdown = menuButton.nextElementSibling;
+                            allDropdowns.forEach(d => {
+                                if (d !== dropdown) d.classList.remove('active');
+                            });
+                            dropdown.classList.toggle('active');
+                        } else if (!menuDropdown) {
+                            allDropdowns.forEach(d => d.classList.remove('active'));
+                        }
+                    });
+                
+                    // Menu item actions
+                    document.addEventListener('click', function (e) {
+                        const menuItem = e.target.closest('.menu-item');
+                        if (!menuItem) return;
+                
+                        const action = menuItem.dataset.action;
+                        const postCard = menuItem.closest('.post-card');
+                        const dropdown = menuItem.closest('.post-menu-dropdown');
+                
+                        switch (action) {
+                            case 'edit':
+                                postCard.classList.add('editing');
+                                dropdown.classList.remove('active');
+                                break;
+                            case 'bookmark':
+                                alert('Post bookmarked!');
+                                dropdown.classList.remove('active');
+                                break;
+                            case 'copy':
+                                alert('Link copied to clipboard!');
+                                dropdown.classList.remove('active');
+                                break;
+                            case 'delete':
+                                document.querySelector('.delete-confirmation').classList.add('active');
+                                document.querySelector('.overlay').classList.add('active');
+                                dropdown.classList.remove('active');
+                                break;
+                            case 'report':
+                                alert('Post reported. We will review it shortly.');
+                                dropdown.classList.remove('active');
+                                break;
+                        }
+                    });
+                
+                    // Edit functionality
+                    document.addEventListener('click', function (e) {
+                        if (e.target.classList.contains('save-edit')) {
+                            const postCard = e.target.closest('.post-card');
+                            const newContent = postCard.querySelector('.edit-input').value;
+                            postCard.querySelector('.post-content p').textContent = newContent;
+                            postCard.classList.remove('editing');
+                        } else if (e.target.classList.contains('cancel-edit')) {
+                            const postCard = e.target.closest('.post-card');
+                            postCard.classList.remove('editing');
+                        }
+                    });
+                
+                    // Delete confirmation
+                    const confirmDelete = document.querySelector('.confirm-delete');
+                    const cancelDelete = document.querySelector('.cancel-delete');
+                
+                    confirmDelete.addEventListener('click', function () {
+                        const postToDelete = document.querySelector('.post-card.editing');
+                        if (postToDelete) {
+                            postToDelete.remove();
+                            document.querySelector('.delete-confirmation').classList.remove('active');
+                            document.querySelector('.overlay').classList.remove('active');
+                        }
+                    });
+                
+                    cancelDelete.addEventListener('click', function () {
+                        document.querySelector('.delete-confirmation').classList.remove('active');
+                        document.querySelector('.overlay').classList.remove('active');
+                    });
+                });
+             
+                </script>
+                <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+                <df-messenger
+                  intent="WELCOME"
+                  chat-title="LuminaGuide"
+                  agent-id="3919fc97-61f1-46d5-96ec-7a961b6764dd"
+                  language-code="en"
+                ></df-messenger>
+                
+</body>
+
+</html>
